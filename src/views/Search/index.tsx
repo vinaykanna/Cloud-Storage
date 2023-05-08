@@ -9,17 +9,17 @@ import { StyledSearchList } from "../styles";
 import SearchFileItem from "./SearchFileItem";
 import SearchFolderItem from "./SearchFolderItem";
 import SortBy from "./SortBy";
-import useQueryParams from "../../hooks/useQueryParams";
+import { useSearchParams } from "react-router-dom";
 
 function Search() {
+  const [searchParams] = useSearchParams();
   const [search, setSearch] = useState("");
-  const { queryParams } = useQueryParams();
   const { mutate, data, isLoading }: any = useMutation(searchStorage);
 
   const handleSearch = (v: string) => {
     setSearch(v);
     mutate({
-      folderId: queryParams.folderId,
+      folderId: searchParams.get("folderId") || null,
       search: v,
     });
   };
@@ -37,7 +37,6 @@ function Search() {
       <Box position="relative">
         <SearchContainer
           minWidth="350px"
-          debounced
           placeHolder="Search"
           onChange={(v) => handleSearch(v)}
           value={search}

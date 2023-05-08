@@ -29,6 +29,7 @@ function FolderMenu({ contextMenu, data, setContextMenu }: Props) {
     onSuccess: () => {
       snack.success("Item deleted successfully");
       queryClient.invalidateQueries("storage");
+      queryClient.invalidateQueries("total-storage-size");
     },
     onError: (err: any) => {
       snack.error(err.response.data.message);

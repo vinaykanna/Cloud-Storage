@@ -43,7 +43,7 @@ export const getMinutesOptions = () => {
 };
 
 export const getTotalLogHoursDuration = (logs: any[]) => {
-  let total = logs.reduce((acc, cur) => {
+  const total = logs.reduce((acc, cur) => {
     return acc + +cur.duration;
   }, 0);
 

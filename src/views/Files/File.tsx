@@ -55,7 +55,7 @@ function File(props: Props) {
         <Box
           width="100%"
           display="flex"
-          flex={1}
+          height="80%"
           justifyContent="center"
           alignItems="center"
         >
@@ -66,13 +66,6 @@ function File(props: Props) {
             <StyledSingleLineContainer>
               <Typography variant="body2">{data?.name}</Typography>
             </StyledSingleLineContainer>
-            {data?.user && (
-              <StyledSingleLineContainer>
-                <Typography variant="caption" color="rgba(0,0,0,0.4)">
-                  Uploaded by {data?.user?.fullName}
-                </Typography>
-              </StyledSingleLineContainer>
-            )}
           </Box>
           <IconButton size="small" onClick={handleContextMenu}>
             <MoreVert />

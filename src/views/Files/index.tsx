@@ -25,7 +25,7 @@ function Files(props: Props) {
         </Typography>
         <Grid container spacing={2}>
           {data?.map((item: any) => (
-            <Grid item xl={xl ?? 3} lg={lg ?? 3} key={item?.id}>
+            <Grid item xl={xl ?? 3} lg={lg ?? 3} md={2} sm={12} key={item?.id}>
               <File data={item} />
             </Grid>
           ))}

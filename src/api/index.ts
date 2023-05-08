@@ -25,21 +25,12 @@ const getStorage = ({ queryKey }: any) => {
   return http.get("/projects/cloud-storage", { params });
 };
 
-const getTotalStorage = ({ queryKey }: any) => {
-  const clientId = queryKey[1];
-  return http.get("/projects/cloud-storage/total-storage", {
-    params: { clientId },
-  });
+const getTotalStorage = () => {
+  return http.get("/projects/cloud-storage/total-storage-size");
 };
 
 const searchStorage = (params: any) => {
-  return http.get("/projects/cloud-storage", { params });
-};
-
-const getStorageTree = ({ queryKey }: any) => {
-  return http.get("/projects/cloud-storage/tree", {
-    params: { clientId: queryKey[1] },
-  });
+  return http.get("/projects/cloud-storage", { params: { ...params } });
 };
 
 const renameFile = (data: any) => {
@@ -63,12 +54,11 @@ export {
   getStorage,
   uploadFile,
   moveFile,
-  getStorageTree,
+  getTotalStorage,
   renameFile,
   removeFile,
   searchStorage,
   replaceFileOrFolder,
   keepBothFilesOrFolders,
-  getTotalStorage,
   createLink,
 };

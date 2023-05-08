@@ -1,9 +1,9 @@
 import { Breadcrumbs, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import useQueryParams from "../hooks/useQueryParams";
+import { useSearchParams } from "react-router-dom";
 
 function BreadCrumbs({ data }: any) {
-  const { queryParams, setQueryParams } = useQueryParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <Box mb={3}>
@@ -15,10 +15,8 @@ function BreadCrumbs({ data }: any) {
             cursor: "pointer",
           }}
           onClick={() => {
-            delete queryParams.folderId;
-            setQueryParams({
-              ...queryParams,
-            });
+            searchParams.delete("folderId");
+            setSearchParams(searchParams);
           }}
         >
           Home
@@ -31,12 +29,12 @@ function BreadCrumbs({ data }: any) {
             sx={{
               cursor: "pointer",
             }}
-            onClick={() =>
-              setQueryParams({
-                ...queryParams,
+            onClick={() => {
+              setSearchParams({
+                ...searchParams,
                 folderId: item?.id,
-              })
-            }
+              });
+            }}
           >
             {item?.name}
           </Typography>

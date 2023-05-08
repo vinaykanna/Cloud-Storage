@@ -9,8 +9,9 @@ import BreadCrumbs from "../views/BreadCrumbs";
 import Search from "../views/Search";
 import AddAttachment from "../views/AddAttachment";
 import Loader from "../components/Loader";
-import { AppBar, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { empty } from "../assets";
+import Header from "../views/Header";
 
 function Storage() {
   const [searchParams] = useSearchParams();
@@ -37,15 +38,7 @@ function Storage() {
 
   return (
     <>
-      <AppBar
-        color="default"
-        sx={{ textAlign: "center", py: 2 }}
-        position="static"
-      >
-        <Typography variant="h4" color="primary">
-          Cloud Storage
-        </Typography>
-      </AppBar>
+      <Header />
       <Box px={4} pb={6}>
         <Box
           display="flex"

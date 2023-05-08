@@ -40,11 +40,11 @@ function AddAttachment() {
     if (!e.target.files.length) return;
 
     const invalidSize = [...e.target.files].some((file: any) => {
-      return file.size > 10000000;
+      return file.size > 100000000;
     });
 
     if (invalidSize) {
-      return snack.error("File size must be less than 10MB");
+      return snack.error("File size must be less than 100MB");
     }
 
     dispatch(setInitialUploads(e.target.files));
@@ -59,6 +59,8 @@ function AddAttachment() {
         console.log(err);
       }
     }
+
+    queryClient.invalidateQueries("total-storage-size");
   };
 
   return (
