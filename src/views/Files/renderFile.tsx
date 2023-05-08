@@ -50,7 +50,7 @@ export const renderFile = (data: any) => {
   }
 };
 
-const ImageFile = ({ url }: any) => (
+export const ImageFile = ({ url }: any) => (
   <img
     src={url}
     draggable={false}
@@ -64,6 +64,6 @@ const ImageFile = ({ url }: any) => (
   />
 );
 
-const PdfFile = ({ url, icon }: any) => (
+export const PdfFile = ({ icon }: any) => (
   <img draggable={false} src={icon} width={80} alt="" />
 );

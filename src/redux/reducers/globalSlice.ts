@@ -1,4 +1,4 @@
-import { RootState } from "redux/store";
+import { RootState } from "../store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IGlobal {

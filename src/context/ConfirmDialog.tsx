@@ -6,18 +6,18 @@ import React from "react";
 
 interface StateProps {
   msg: string;
-  action: () => void;
+  action: (() => void) | null;
 }
 
-type ContextProps = (args: StateProps) => void;
+type ContextProps = ((args: StateProps) => void) | null;
 
-export const ConfirmDialogContext = React.createContext<ContextProps>(() => {});
+export const ConfirmDialogContext = React.createContext<ContextProps>(null);
 
 function ConfirmDialogProvider({ children }: any) {
   const [open, setOpen] = React.useState(false);
   const [state, setState] = React.useState<StateProps>({
     msg: "",
-    action: () => {},
+    action: null,
   });
 
   const handleClose = () => {
@@ -25,7 +25,7 @@ function ConfirmDialogProvider({ children }: any) {
   };
 
   const onOk = () => {
-    state.action();
+    state.action && state.action();
     handleClose();
   };
 
@@ -76,7 +76,5 @@ function ConfirmDialogProvider({ children }: any) {
     </ConfirmDialogContext.Provider>
   );
 }
-
-export const useConfirm = () => React.useContext(ConfirmDialogContext);
 
 export default ConfirmDialogProvider;

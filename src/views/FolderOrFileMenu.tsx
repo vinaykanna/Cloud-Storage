@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { removeFile } from "../api";
 import { snack } from "../components/toast";
-import { useConfirm } from "../context/ConfirmDialog";
 import RenameFileOrFolderDialog from "./RenameFileOrFolder";
+import { useConfirm } from "../context";
 
 type Position = {
   mouseX: number;
@@ -36,7 +36,7 @@ function FolderMenu({ contextMenu, data, setContextMenu }: Props) {
   });
 
   const handleDelete = () => {
-    confirm({
+    confirm?.({
       msg: "Are you sure you want to delete this item?",
       action: () => {
         mutate(data.id);

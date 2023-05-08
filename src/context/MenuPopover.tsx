@@ -1,5 +1,5 @@
 import { ListItemIcon, Menu, MenuItem } from "@mui/material";
-import { createContext, ReactElement, useContext, useState } from "react";
+import { createContext, ReactElement, useState } from "react";
 
 interface StateProps {
   target: HTMLElement | null;
@@ -11,9 +11,9 @@ interface StateProps {
   }>;
 }
 
-type ContextProps = (args: StateProps) => void;
+type ContextProps = ((args: StateProps) => void) | null;
 
-export const MenuPopoverContext = createContext<ContextProps>(() => {});
+export const MenuPopoverContext = createContext<ContextProps>(null);
 
 function MenuPopoverProvider({ children }: any) {
   const [state, setState] = useState<StateProps>({
@@ -73,7 +73,5 @@ function MenuPopoverProvider({ children }: any) {
     </MenuPopoverContext.Provider>
   );
 }
-
-export const useMenu = () => useContext(MenuPopoverContext);
 
 export default MenuPopoverProvider;
